@@ -1,0 +1,69 @@
+<div class="min-h-screen bg-gray-100 flex  ">
+  <!-- Sidebar -->
+  <aside [ngClass]="sidebarCollapsed ? 'w-20' : 'w-64'" class="bg-blue-600 text-white p-4 transition-all duration-300 ease-in-out flex flex-col">
+    <div class="flex items-center justify-between mb-8">
+      <p [ngClass]="sidebarCollapsed ? 'hidden' : 'text-2xl font-semibold'">Dashboard</p>
+      <button class="text-white focus:outline-none" (click)="toggleSidebar()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+    <nav class="flex-grow">
+      <ul>
+        <li class="mb-4">
+          <a routerLink="/dashboard/home" routerLinkActive="bg-blue-700" class="block p-2 rounded hover:bg-blue-700 flex items-center">
+            <svg [ngClass]="sidebarCollapsed ? 'mx-auto' : 'mr-2'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l3 3l3-3m0 0l3 3l3-3m0 0l3 3l3-3m0 0V5H3v7z" />
+            </svg>
+            <span [ngClass]="sidebarCollapsed ? 'hidden' : 'inline-block'">Home</span>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a routerLink="/dashboard/profile" routerLinkActive="bg-blue-700" class="block p-2 rounded hover:bg-blue-700 flex items-center">
+            <svg [ngClass]="sidebarCollapsed ? 'mx-auto' : 'mr-2'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l-3 3h6l-3-3m0 0l3-3l-6 0l3 3m-3-3a9 9 0 110-18a9 9 0 010 18z" />
+            </svg>
+            <span [ngClass]="sidebarCollapsed ? 'hidden' : 'inline-block'">Profile</span>
+          </a>
+        </li>
+        <li class="mb-4">
+          <a routerLink="/dashboard/settings" routerLinkActive="bg-blue-700" class="block p-2 rounded hover:bg-blue-700 flex items-center">
+            <svg [ngClass]="sidebarCollapsed ? 'mx-auto' : 'mr-2'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a1.5 1.5 0 103 0a1.5 1.5 0 10-3 0zm6 0a1.5 1.5 0 103 0a1.5 1.5 0 10-3 0zm6 0a1.5 1.5 0 103 0a1.5 1.5 0 10-3 0z" />
+            </svg>
+            <span [ngClass]="sidebarCollapsed ? 'hidden' : 'inline-block'">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="mt-auto">
+      <button class="w-full p-2 mt-6 bg-red-500 rounded-lg hover:bg-red-600 flex items-center justify-center" (click)="logout()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1m-6-1V4m6 0v1m0-1a1 1 0 00-1-1h-4a1 1 0 00-1 1v16a1 1 0 001 1h4a1 1 0 001-1v-1" />
+        </svg>
+        <span [ngClass]="sidebarCollapsed ? 'hidden' : 'ml-2'">Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 p-6 transition-all duration-300 ease-in-out" [ngClass]="sidebarCollapsed ? 'ml-20' : 'ml-64'">
+    <!-- Greeting and Time -->
+    <div class="mb-6">
+      <h2 class="text-3xl font-semibold text-gray-800">{{ greeting }}, {{ firstname }}!</h2>
+      <p class="text-gray-600">Time: {{ currentTime }}</p>
+    </div>
+
+    <!-- User Info Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-lg" *ngFor="let info of userInfo">
+        <h3 class="text-xl font-medium text-gray-800 mb-2">{{ info.label }}</h3>
+        <p class="text-gray-600">{{ info.value }}</p>
+      </div>
+    </div>
+
+    <!-- Router outlet for displaying selected section -->
+    <router-outlet></router-outlet>
+  </main>
+</div>

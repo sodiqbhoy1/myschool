@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+
+<!-- Hero section with carousel -->
+<div class="hero min-h-screen bg-gray-100">
+  <div class="hero-content flex flex-col lg:flex-row">
+    <div class="lg:w-1/2 text-center lg:text-left">
+      <h1 class="text-5xl font-bold">Welcome to SchoolName</h1>
+      <p class="py-6">
+        Empowering students to achieve academic excellence and personal growth.
+      </p>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+    <div class="lg:w-1/2 carousel rounded-lg shadow-lg">
+      <div id="slide1" class="carousel-item relative w-full">
+        <img src="https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp" class="w-full"
+          alt="School Image 1" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide3" class="btn btn-circle">❮</a>
+          <a href="#slide2" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide2" class="carousel-item relative w-full">
+        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" class="w-full"
+          alt="School Image 2" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide1" class="btn btn-circle">❮</a>
+          <a href="#slide3" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide3" class="carousel-item relative w-full">
+        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" class="w-full"
+          alt="School Image 3" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide2" class="btn btn-circle">❮</a>
+          <a href="#slide1" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card section -->
+<div class="py-12 bg-gray-100">
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="card bg-white shadow-xl">
+      <figure>
+        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Library" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">Our Library</h2>
+        <p>Explore our extensive collection of books and resources.</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Explore Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-white shadow-xl">
+      <figure>
+        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Labs" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">Science Labs</h2>
+        <p>State-of-the-art laboratories for hands-on learning experiences.</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Learn More</button>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-white shadow-xl">
+      <figure>
+        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Sports" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">Sports Facilities</h2>
+        <p>Top-notch facilities to encourage physical education and sportsmanship.</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Get Involved</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

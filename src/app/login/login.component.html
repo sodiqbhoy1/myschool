@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<div class="flex items-center justify-center min-h-screen bg-blue-50">
+  <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold text-center text-blue-800 mb-6">Sign In</h2>
+
+    <form [formGroup]="loginform">
+      <!-- Email Field -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input
+          id="email"
+          type="email"
+          class="w-full px-4 py-2 mt-2 text-sm border rounded-lg shadow-none focus:ring-2 focus:ring-blue-600 focus:outline-none transition-all duration-200"
+          placeholder="name@example.com"
+          formControlName="email"
+          [ngClass]="{
+            'border-red-500': loginform.get('email')?.invalid && loginform.get('email')?.touched,
+            'border-green-500': loginform.get('email')?.valid
+          }"
+        />
+        <div *ngIf="loginform.get('email')?.invalid && loginform.get('email')?.touched" class="mt-1 text-sm text-red-600">
+          <small *ngIf="loginform.get('email')?.errors?.['required']">Email is required.</small>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-6">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          id="password"
+          type="password"
+          class="w-full px-4 py-2 mt-2 text-sm border rounded-lg shadow-none focus:ring-2 focus:ring-blue-600 focus:outline-none transition-all duration-200"
+          placeholder="Password"
+          formControlName="password"
+          [ngClass]="{
+            'border-red-500': loginform.get('password')?.invalid && loginform.get('password')?.touched,
+            'border-green-500': loginform.get('password')?.valid
+          }"
+        />
+        <div *ngIf="loginform.get('password')?.invalid && loginform.get('password')?.touched" class="mt-1 text-sm text-red-600">
+          <small *ngIf="loginform.get('password')?.errors?.['required']">Password is required.</small>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        class="w-full py-2 font-medium text-white bg-blue-800 rounded-lg shadow hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-200"
+        type="submit"
+        (click)="signinBtn()"
+      >
+        Sign In
+      </button>
+    </form>
+  </div>
+</div>

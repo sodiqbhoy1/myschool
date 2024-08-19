@@ -1,0 +1,107 @@
+
+<app-navbar></app-navbar>
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100 mt-16">
+  <div class="w-full max-w-lg bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-center text-2xl font-extrabold text-gray-900 mb-6">Sign Up</h2>
+
+    <form [formGroup]="newform" (ngSubmit)="submitBtn()">
+
+      <!-- Error message display -->
+      <div *ngIf="errormessage" class="flex items-center mb-4 p-3 bg-red-100 border border-red-400 text-red-600 rounded-md">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-12.728 12.728m0-12.728l12.728 12.728"></path>
+        </svg>
+        <small>{{errormessage}}</small>
+      </div>
+
+      <!-- Warning message display -->
+      <div *ngIf="emptyfields" class="flex items-center mb-4 p-3 bg-yellow-100 border border-yellow-400 text-yellow-600 rounded-md">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 18.001h.01"></path>
+        </svg>
+        <small>{{emptyfields}}</small>
+      </div>
+
+      <!-- Inputs container -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"> <!-- Responsive grid layout -->
+
+        <!-- Username input -->
+        <div class="mb-4">
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <input type="text" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Choose a username" name="uname" formControlName="username">
+
+          <!-- Username validation -->
+          <div *ngIf="newform.get('username')?.invalid && (newform.get('username')?.dirty || newform.get('username')?.touched)">
+            <div class="mt-1 text-xs text-red-600">
+              <small *ngIf="newform.get('username')?.errors?.['required']">Username is required.</small>
+              <small *ngIf="newform.get('username')?.errors?.['minlength']">Username must be at least 4 characters long.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- First Name input -->
+        <div class="mb-4">
+          <label for="firstname" class="block text-sm font-medium text-gray-700">First Name</label>
+          <input type="text" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="First name" name="fname" formControlName="firstname">
+
+          <!-- First Name validation -->
+          <div *ngIf="newform.get('firstname')?.invalid && (newform.get('firstname')?.dirty || newform.get('firstname')?.touched)">
+            <div class="mt-1 text-xs text-red-600">
+              <small *ngIf="newform.get('firstname')?.errors?.['required']">First name is required.</small>
+              <small *ngIf="newform.get('firstname')?.errors?.['minlength']">First name must be at least 3 characters long.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Last Name input -->
+        <div class="mb-4">
+          <label for="lastname" class="block text-sm font-medium text-gray-700">Last Name</label>
+          <input type="text" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Last name" name="lname" formControlName="lastname">
+
+          <!-- Last Name validation -->
+          <div *ngIf="newform.get('lastname')?.invalid && (newform.get('lastname')?.dirty || newform.get('lastname')?.touched)">
+            <div class="mt-1 text-xs text-red-600">
+              <small *ngIf="newform.get('lastname')?.errors?.['required']">Last name is required.</small>
+              <small *ngIf="newform.get('lastname')?.errors?.['minlength']">Last name must be at least 3 characters long.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email input -->
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Email address" name="email" formControlName="email">
+
+          <!-- Email validation -->
+          <div *ngIf="newform.get('email')?.invalid && (newform.get('email')?.dirty || newform.get('email')?.touched)">
+            <div class="mt-1 text-xs text-red-600">
+              <small *ngIf="newform.get('email')?.errors?.['required']">Email is required.</small>
+              <small *ngIf="newform.get('email')?.errors?.['email']">Enter a valid email address.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password input -->
+        <div class="mb-4">
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Password" name="pwd" formControlName="password">
+
+          <!-- Password validation -->
+          <div *ngIf="newform.get('password')?.invalid && (newform.get('password')?.dirty || newform.get('password')?.touched)">
+            <div class="mt-1 text-xs text-red-600">
+              <small *ngIf="newform.get('password')?.errors?.['required']">Password is required.</small>
+              <small *ngIf="newform.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End of grid layout -->
+
+      <!-- Submit button -->
+      <div class="mt-6">
+        <button type="submit" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" [disabled]="newform.invalid">Sign Up</button>
+      </div>
+
+    </form>
+  </div>
+</div>
